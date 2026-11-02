@@ -69,5 +69,15 @@ def mount_frontend(directory: str | None) -> None:
         app.mount("/", StaticFiles(directory=path, html=True), name="frontend")
 
 
-DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
-mount_frontend(os.environ.get("GALE_STATIC") or (str(DIST) if DIST.is_dir() else None))
+def static_directory() -> str | None:
+    configured = os.environ.get("GALE_STATIC")
+    if configured and Path(configured).is_dir():
+        return configured
+    root = Path(__file__).resolve().parents[2]
+    for candidate in (root / "public", root / "frontend" / "dist"):
+        if (candidate / "index.html").is_file():
+            return str(candidate)
+    return None
+
+
+mount_frontend(static_directory())
