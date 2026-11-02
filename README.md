@@ -6,7 +6,9 @@ The forecast runs about 1.8 GW high for the month, at every gate. It still remov
 
 ## Live app
 
-Deployment is documented here once the host is up. Run it locally with the commands below in the meantime.
+<https://q8n4kw.vercel.app>
+
+It opens on 15 January in the N2EX book. `?gate=epex` and `?gate=hh` switch the auction. The left and right arrow keys move the delivery day.
 
 ## Run it
 
@@ -79,8 +81,7 @@ frontend/                    React desk
 scripts/fetch_elexon.py      Rebuild the extract from BMRS
 Dockerfile                   API and the built desk, one image
 docker-compose.yml
-vercel.json
-.github/workflows/check.yml  Tests, frontend build, image smoke test
+vercel.json                  Build and the Vercel function entry
 docs/video-script.md         Shot list for the ten-minute review
 ```
 

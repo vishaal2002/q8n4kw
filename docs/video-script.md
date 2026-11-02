@@ -36,6 +36,6 @@ Do not say the 09:30 run fixes the bias. It does not. Do not say the desk knows 
 
 **3:00** Back on the desk, open **How these numbers are made**. MAE, RMSE, weighted absolute error, correlation, the within-hour spread of 217 MW, and the limit: outturn is generation after the system has acted. Open **Half-hours** on 15 January and show one row, forecast against the two settlement periods. Mention **Download the paired hours**.
 
-**3:50** Point at the layout. `frontend/src` is the desk. `api/index.py` is the same FastAPI app for Vercel. `Dockerfile` builds the frontend and serves it from the API. `.github/workflows/check.yml` runs pytest, the frontend build, and a container smoke test against `/api/health`.
+**3:50** Point at the layout. `frontend/src` is the desk. `api/index.py` is the same FastAPI app for Vercel. `Dockerfile` builds the frontend and serves it from the API. `pytest` is the gate rule, the metrics, and a check that the January extract still has 744 paired hours and the 12:25 run on 16 January.
 
 **4:30** How to run: `docker compose up --build`, or the API on port 8000 and `npm run dev` in `frontend`. The dev server proxies `/api`. Stop there.
