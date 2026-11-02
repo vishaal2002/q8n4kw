@@ -1,0 +1,7 @@
+services:
+  gale:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      GALE_STATIC: /app/frontend/dist
