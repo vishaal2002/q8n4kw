@@ -65,7 +65,9 @@ def mount_frontend(directory: str | None) -> None:
         return
     path = Path(directory)
     if path.is_dir():
+        # Registered after the API routes, so /api keeps priority.
         app.mount("/", StaticFiles(directory=path, html=True), name="frontend")
 
 
-mount_frontend(os.environ.get("GALE_STATIC"))
+DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+mount_frontend(os.environ.get("GALE_STATIC") or (str(DIST) if DIST.is_dir() else None))
